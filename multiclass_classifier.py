@@ -11,9 +11,9 @@ import _pickle as cPickle
 import time
 
 # Setting the path & filename
-os.chdir('I:\\Tests\\Data-Scientist-master\\')
-dataset_path = "I:\\Tests\\Data-Scientist-master\\"
-filename = "trainingdataOrig.txt"
+os.chdir('~your_path')
+dataset_path = "~your_path"
+filename = "~your_filename.txt"
 
 ## returns term-frequency for the word
 def tf(word, blob):
@@ -82,8 +82,7 @@ distinct_classes = set(train['category'])
 ## which distributes to around 50/50 in dataset.
 ## Next, removes all documents with class '1' 
 ## and train classifier for next major class and so on.
-def create_classifier(doc,class_freq):
-        
+def create_classifier(doc,class_freq):        
     ## iterates through all classes in dataset
     for i in class_freq:         
         ## create a copy of dataframe
@@ -144,8 +143,7 @@ ModelLoadTime = end - start
 
 
 ## recursive function to predict text class using all trained models
-def classify_text(text,i=0):
-    
+def classify_text(text,i=0):    
     global distinct_classes,class_freq,classifier
     
     ## condition to exit the recursion

@@ -63,9 +63,9 @@ For this highly imbalanced dataset, these measures looks failry good.
 
 ##Next what?
 Next, I will be trying different combinations of feature-vectors, classifier and train-test split strategy.
-Feature-vectors: BOW, TF, TFIDF, 
-Classifier: NB, SVM, kNN
-Split Strategy: 70-30, 80-20, Kfold
+  - Feature-vectors: BOW, TF, TFIDF, 
+  - Classifier: NB, SVM, kNN
+  - Split Strategy: 70-30, 80-20, Kfold
 
 ##Feedback
 Comments, bug reports, and ideas are more than welcome.

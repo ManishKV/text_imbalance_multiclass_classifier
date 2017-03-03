@@ -44,15 +44,15 @@ TFIDF representation is used in preprocessing where words lower than 0.0 tfidf v
 
 The other issue I had that the dataset is highly imbalanced with multiple classes. Below is the distribution of dataset along with thier classes:
 ```
-class category
-1     49.954421
-2     30.993619
-3      4.466727
-6      4.466727
-8      4.102097
-7      3.008204
-4      1.823154
-5      1.185050
+class Count    %
+1     548      49.954421
+2     340      30.993619
+3     49       4.466727
+6     49       4.466727
+8     45       4.102097
+7     33       3.008204
+4     20       1.823154
+5     13       1.185050
 ```
 FOr dealing with such dataset, I have created a recursive process, wherein the classifier is trained for binary class classification : class 1 vs all other. Next, class1 is removed from training set and classifier is trained on class2 vs all other and so on. This is iterated on the basis of class density rather than class name. This way the classifier is trained on a fairly balanced dataset with just two classes. 
 

@@ -1,4 +1,3 @@
-import os
 from nltk.corpus import stopwords
 import io
 from stemming.porter2 import stem
@@ -11,9 +10,8 @@ import _pickle as cPickle
 import time
 
 # Setting the path & filename
-os.chdir('~your_path')
-dataset_path = "~your_path"
-filename = "~your_filename.txt"
+dataset_path = ".//"
+filename = "text_data.txt"
 
 ## returns term-frequency for the word
 def tf(word, blob):

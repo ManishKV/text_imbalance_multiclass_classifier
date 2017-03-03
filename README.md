@@ -80,5 +80,9 @@ Next, I will be trying different combinations of feature-vectors, classifier and
   - Classifier: NB, SVM, kNN
   - Split Strategy: 70-30, 80-20, Kfold
 
+I will also try different approaches to deal with imbalance dataset like Stratified Under-sampling, Clustering-based under-sampling, Cost-sensitive classification and class weights classification.
+
+Soon will post codes and details for above said approaches.
+
 ##Feedback
 Comments, bug reports, and ideas are more than welcome.

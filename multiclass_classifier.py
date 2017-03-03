@@ -1,4 +1,3 @@
-print("Import libraries")
 import os
 from nltk.corpus import stopwords
 import io
@@ -11,14 +10,10 @@ from textblob.classifiers import NaiveBayesClassifier
 import _pickle as cPickle
 import time
 
-
-
-print("Reading input file")
 # Setting the path & filename
 os.chdir('I:\\Tests\\Data-Scientist-master\\')
 dataset_path = "I:\\Tests\\Data-Scientist-master\\"
 filename = "trainingdataOrig.txt"
-
 
 ## returns term-frequency for the word
 def tf(word, blob):
@@ -39,9 +34,6 @@ def tfidf(word, blob, bloblist):
 ## stopwords from nltk corpus
 stop = stopwords.words("english")
 
-
-print("Initial preprocessing...")
-
 ## reads the file, ignore the first line
 ## remove stopwords
 ## creates list of document and respective class
@@ -54,8 +46,6 @@ with io.open(dataset_path+filename, encoding='utf-8') as file:
         category_list.append(data.split(' ', 1)[0])
         docword_list.append(tb(data.split(' ', 1)[1]))
 
-
-print("removing words based on tfidf...")
 
 ## removes words from each document whose tfidf < 0.0
 ## stores trimmed corpus in a dataframe
@@ -85,8 +75,6 @@ class_freq['index'] = class_freq.index
 distinct_classes = set(train['category'])
 
 
-
-
 ## fucntion creates classifier to each class seperately
 ## so every classifier acts as a binary classifier 
 ## this helps to overcome the issues of imbalanced classes dataset
@@ -97,8 +85,7 @@ distinct_classes = set(train['category'])
 def create_classifier(doc,class_freq):
         
     ## iterates through all classes in dataset
-    for i in class_freq: 
-        print('\nIteration:',i,' Category:',class_freq[i])
+    for i in class_freq:         
         ## create a copy of dataframe
         temp_doc = doc.copy()
         ## assign class as '-1' to all other classes.
@@ -114,6 +101,8 @@ def create_classifier(doc,class_freq):
         ## reassign doc with the new reduced dataset
         doc = doc[doc['category'] != class_freq[i]].copy()
       
+
+
 ## to track time taken in creating classifiers
 print("Creating classifiers")
 start = time.time()
@@ -121,11 +110,10 @@ start = time.time()
 create_classifier(train.copy(),class_freq['index'])
 end = time.time()
 TrainingSavingModel = end - start
-print("Time to train and save model =",TrainingSavingModel," secs") 
+#print("Time to train and save model =",TrainingSavingModel," secs") 
 
 
 ## loading each classifier
-print("Loading models...")
 start = time.time()
 with open('classifier_1.pkl', 'rb') as fid:
     classifier_1 = cPickle.load(fid) 
@@ -153,7 +141,7 @@ with open('classifier_8.pkl', 'rb') as fid:
     
 end = time.time()
 ModelLoadTime = end - start
-print("Time to load all models =",ModelLoadTime," secs") 
+#print("Time to load all models =",ModelLoadTime," secs") 
 
 
 ## recursive function to predict text class using all trained models
@@ -234,10 +222,6 @@ classsifier_assignemnt = {
     8 : c_8,
 }
 
-
-
-print("Classifying test data...")
-
 ## Predicting on Test Dataset
 i=1
 test = test.reset_index()
@@ -250,13 +234,13 @@ start = time.time()
 for text in test['Document']:
     text = ' '.join([stem(word) for word in text.split() if word not in stop])
     predicted_category.append(classify_text(text))   
-    print("Currently running: ", i)
+    #print("Currently running: ", i)
     i+=1
 
 end = time.time()
 elapsed = end - start
 AverageClassifyTime = elapsed/(i-1)
-print("Average time to classify a document =",AverageClassifyTime," secs")
+#print("Average time to classify a document =",AverageClassifyTime," secs")
 
 ## adds the list to test dataframe
 test['predicted_category'] = pd.Series(predicted_category)

@@ -58,8 +58,21 @@ FOr dealing with such dataset, I have created a recursive process, wherein the c
 
 ##Performance
 The algorithm using naive bayes performs fairly well. Using tfidf, the performance improved a bit.
-The algorithm is giving a overall accuracy in mid 80's. With precision and recall also in range of 80's for each class. 
 For this highly imbalanced dataset, these measures looks failry good.
+```
+                precision    recall  f1-score   support
+
+    class 1       0.82      0.91      0.86       562
+    class 2       0.87      0.72      0.79       318
+    class 3       0.80      0.75      0.78        53
+    class 4       0.68      0.85      0.76        20
+    class 5       0.40      0.67      0.50         3
+    class 6       0.79      0.73      0.76        56
+    class 7       0.55      0.48      0.52        33
+    class 8       0.56      0.56      0.56        52
+
+avg / total       0.81      0.81      0.80      1097
+```
 
 ##Next what?
 Next, I will be trying different combinations of feature-vectors, classifier and train-test split strategy.

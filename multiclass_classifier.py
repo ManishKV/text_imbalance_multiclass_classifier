@@ -104,7 +104,6 @@ def create_classifier(doc,class_freq):
 
 
 ## to track time taken in creating classifiers
-print("Creating classifiers")
 start = time.time()
 ## Training Models and Saving
 create_classifier(train.copy(),class_freq['index'])
